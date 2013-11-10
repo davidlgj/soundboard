@@ -1,0 +1,18 @@
+<div id="record" ng-show="recorder">
+    <div ng-click="record(currentSound)" ng-class="{recording: recording}"></div>
+</div>
+<div id="edit" ng-show="editview">
+    <div ng-click="delete(currentSound)">Delete</div>
+    <div ng-click="picture(currentSound)">Picture</div>
+    <div ng-click="album(currentSound)">From album</div>
+    <div ng-click="openRecorder(currentSound)">Record</div>
+    
+</div>
+<ul>
+    <li ng-repeat="sound in sounds" 
+        ng-style="{ 'background-image': 'url('+sound.image+')' }" 
+        ng-click="play(sound.file)" 
+        taphold="edit(sound)">
+    </li>
+    <li class="add" ng-click="add()" taphold="edit(sound)">+</li>
+</ul>
