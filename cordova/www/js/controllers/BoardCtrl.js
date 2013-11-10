@@ -1,8 +1,9 @@
 
 
-angular.module('soundboard').controller('BoardCtrl',['$scope','$q',function($scope,$q){
+angular.module('soundboard').controller('BoardCtrl',['$scope','$q','fileService',function($scope,$q,fileService){
 
     $scope.sounds = angular.fromJson(localStorage.getItem('sounds')) || []
+    $scope.recorder = false
 
     var playing = {}
 
@@ -53,6 +54,8 @@ angular.module('soundboard').controller('BoardCtrl',['$scope','$q',function($sco
             return deferred.promise            
         }
 
+/*
+        TODO: move file from album to app storage on sd card
         var fromAlbum = function() {
             var deferred = $q.defer()
             navigator.camera.getPicture(function(uri){
@@ -71,13 +74,11 @@ angular.module('soundboard').controller('BoardCtrl',['$scope','$q',function($sco
             return deferred.promise            
         }
 
-
-        $scope.add = function() {
-            takePicture().then(function(uri){
-                $scope.currentSound = { image: uri }
-                $scope.sounds.push($scope.currentSound)
-                $scope.recorder = true
-            })
+        TODO: edit on taphold instead of delete        
+        $scope.edit = function(sound){
+            console.log('edit!'+angular.toJson(sound))
+            $scope.editview = true
+            $scope.currentSound = sound
         }
 
         $scope.openRecorder = function(sound) {            
@@ -106,6 +107,16 @@ angular.module('soundboard').controller('BoardCtrl',['$scope','$q',function($sco
             })   
         }
 
+*/
+
+        $scope.add = function() {
+            takePicture().then(function(uri){
+                $scope.currentSound = { image: uri }
+                $scope.sounds.push($scope.currentSound)
+                $scope.recorder = true
+            })
+        }
+
 
         $scope.recording = false
         var recordingMedia = null
@@ -123,7 +134,7 @@ angular.module('soundboard').controller('BoardCtrl',['$scope','$q',function($sco
                 },function(err){ 
                     console.log('error '+angular.toJson(err))
                     $scope.recording = false
-                    $scope.recorder = false;
+                    $scope.recorder = false
                     recordingMedia.release() 
                     recordingMedia = null
                 })
@@ -133,11 +144,11 @@ angular.module('soundboard').controller('BoardCtrl',['$scope','$q',function($sco
                 if (recordingMedia) {
                     console.log('stopping recording')
                     recordingMedia.stopRecord()
-                    recordingMedia.release();
+                    recordingMedia.release()
                     recordingMedia = null
                     localStorage.setItem('sounds',angular.toJson($scope.sounds))
                 }
-                $scope.recorder = false;
+                $scope.recorder = false
                 $scope.recording = false
             }
         }
@@ -146,26 +157,25 @@ angular.module('soundboard').controller('BoardCtrl',['$scope','$q',function($sco
     }, false);
 
 
-    $scope.edit = function(sound){
-        console.log('edit!'+angular.toJson(sound))
-        $scope.editview = true
-        $scope.currentSound = sound
-    }
-
-
     $scope.delete = function(sound) {
+        if (playing[sound.file]) {
+            return
+        }
         //FIXME: actually delete files as well
         //TODO: translate
-        navigator.notification.confirm('Are you sure?', function(){
+        navigator.notification.confirm('Delete sound?', function(){
             for (var i=0; i<$scope.sounds.length;i++) {
                 if (sound === $scope.sounds[i]) {
                     $scope.sounds.splice(i,1)
                     break;
                 }
             }
+            //FIXME: error handling. 
+            fileService.rm(sound.image)
+            fileService.rm(sound.file)
             $scope.editview = false
             $scope.$apply()
-        },'Delete',['Delete','Cancel'])
+        })
     }
 
 

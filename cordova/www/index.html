@@ -8,15 +8,33 @@
     <link rel="stylesheet" href="css/main.css">
     <script type="text/javascript" src="js/libs/angular.min.js"></script>
     <script type="text/javascript" src="js/libs/angular-touch.js"></script>
-    <script type="text/javascript" src="js/libs/angular-route.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/controllers/BoardCtrl.js"></script>
     <script type="text/javascript" src="js/controllers/BoardsCtrl.js"></script>
+    <script type="text/javascript" src="js/services/file.js"></script>
     <script type="text/javascript" src="js/directives/taphold.js"></script>
     <script src="cordova.js"></script>
 </body>
 </head>
-<body ng-view>
+<body ng-controller="BoardCtrl">
+    <div id="record" ng-show="recorder">
+        <div ng-click="record(currentSound)" ng-class="{recording: recording}"></div>
+    </div>
+    <!-- TODO: make it editable
+        <div id="edit" ng-show="editview">
+        <div ng-click="delete(currentSound)">Delete</div>
+        <div ng-click="picture(currentSound)">Picture</div>
+        <div ng-click="album(currentSound)">From album</div>
+        <div ng-click="openRecorder(currentSound)">Record</div>
+    </div> -->
+    <ul>
+        <li ng-repeat="sound in sounds" 
+            ng-style="{ 'background-image': 'url('+sound.image+')' }" 
+            ng-click="play(sound.file)" 
+            taphold="delete(sound)">
+        </li>
+        <li class="add" ng-click="add()">+</li>
+    </ul>
 
 </body>    
 </html>

@@ -20,14 +20,26 @@ angular.module('soundboard').factory('fileService',['$q',function($q){
 
 
     fileService.cp = wrap(function(deferred,src,dest) {
-        window.resolveLocalFileSystemURI(src, function(){}, function(){
-            deferred
-        });
-
+        //TODO: nedded for "from album"
     })
 
     fileService.rm = wrap(function(deferred,pth) {
-        
+        if (!angular.isString(pth)) {
+            deferred.reject('Path should be a string')
+            return;
+        }  
+        console.log('resolving '+pth)
+        window.resolveLocalFileSystemURI(pth, function(fileEntry){
+            fileEntry.remove(function(){
+                console.log('deleted '+pth)
+                deferred.resolve()
+            },function(err){
+                deferred.reject(err)
+                console.log(angular.toJson(err))
+            })
+        }, function(){
+            deferred.reject('Could not resolve uri '+pth)
+        })
     })
 
 
