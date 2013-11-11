@@ -7,7 +7,7 @@ angular.module('soundboard').factory('fileService',['$q',function($q){
     var wrap = function(fn) {
         return function() {
             var deferred = $q.defer()
-            if (!fs) {
+            if (!fs || !window.cordova) {
                 deferred.reject('no filesystem')
             } else {
                 var args = Array.prototype.slice(arguments)

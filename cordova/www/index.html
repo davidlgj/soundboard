@@ -10,7 +10,6 @@
     <script type="text/javascript" src="js/libs/angular-touch.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/controllers/BoardCtrl.js"></script>
-    <script type="text/javascript" src="js/controllers/BoardsCtrl.js"></script>
     <script type="text/javascript" src="js/services/file.js"></script>
     <script type="text/javascript" src="js/directives/taphold.js"></script>
     <script src="cordova.js"></script>
@@ -28,12 +27,12 @@
         <div ng-click="openRecorder(currentSound)">Record</div>
     </div> -->
     <ul>
-        <li ng-repeat="sound in sounds" 
-            ng-style="{ 'background-image': 'url('+sound.image+')' }" 
-            ng-click="play(sound.file)" 
-            taphold="delete(sound)">
+        <li ng-repeat="sound in sounds">
+            <div ng-style="{ 'background-image': 'url('+sound.image+')' }" 
+                 ng-click="play(sound.file)" 
+                 taphold="delete(sound)"></div>
         </li>
-        <li class="add" ng-click="add()">+</li>
+        <li><div class="add" ng-click="add()">+</div></li>
     </ul>
 
 </body>    
