@@ -9,27 +9,35 @@ angular.module('soundboard').controller('BoardCtrl',['$scope','$q','fileService'
 
     document.addEventListener("deviceready", function(){
     
-        $scope.play = function(file) {
-            console.log('play')
-            if (!playing[file]) {
-                var media = new Media(file, function(){
-                    console.log('success! releasing media')
-                    delete playing[file]
+        $scope.play = function(sound,index) {
+            var start = Date.now()
+            var node = angular.element(document.querySelector('#sound'+index))
+                              .addClass('playing')
+
+            if (!playing[sound.file]) {
+                var media = new Media(sound.file, function(){
+                    console.log('success! releasing media ' + sound.image)
+                    node.removeClass('playing')
+                    delete playing[sound.file]
                     if (media) {
                         media.release()
                     }
+
                 }, function(err){
+                    node.removeClass('playing')
                     console.log('error play '+err)
-                    delete playing[file]
+                    delete playing[sound.file]
                     if (media) {
                         media.release()
                     }
                 })
                 media.play();
-                playing[file] = media;
+
+                console.log('starting play took ' + (Date.now()-start))
+                playing[sound.file] = media;
             } else {
                 console.log('resetting sound')
-                playing[file].seekTo(0)
+                playing[sound.file].seekTo(0)
             }
         }
 
@@ -163,18 +171,20 @@ angular.module('soundboard').controller('BoardCtrl',['$scope','$q','fileService'
         }
         //FIXME: actually delete files as well
         //TODO: translate
-        navigator.notification.confirm('Delete sound?', function(){
-            for (var i=0; i<$scope.sounds.length;i++) {
-                if (sound === $scope.sounds[i]) {
-                    $scope.sounds.splice(i,1)
-                    break;
+        navigator.notification.confirm('Delete sound?', function(button){
+            if (button === 1) {
+                for (var i=0; i<$scope.sounds.length;i++) {
+                    if (sound === $scope.sounds[i]) {
+                        $scope.sounds.splice(i,1)
+                        break;
+                    }
                 }
+                //FIXME: error handling. 
+                fileService.rm(sound.image)
+                fileService.rm(sound.file)
+                $scope.editview = false
+                $scope.$apply()
             }
-            //FIXME: error handling. 
-            fileService.rm(sound.image)
-            fileService.rm(sound.file)
-            $scope.editview = false
-            $scope.$apply()
         })
     }
 

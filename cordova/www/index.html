@@ -28,8 +28,8 @@
     </div> -->
     <ul>
         <li ng-repeat="sound in sounds">
-            <div ng-style="{ 'background-image': 'url('+sound.image+')' }" 
-                 ng-click="play(sound.file)" 
+            <div id="sound{{$index}}" ng-style="{ 'background-image': 'url('+sound.image+')' }" 
+                 ng-click="play(sound,$index)" 
                  taphold="delete(sound)"></div>
         </li>
         <li><div class="add" ng-click="add()">+</div></li>
