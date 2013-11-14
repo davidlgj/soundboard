@@ -18,7 +18,9 @@ body {
   padding: 20px;
   margin: 0px;
   min-height: 100%;
-  background-image: url(../img/tweed.png);
+  background-image: url(../img/triangular.png);
+  background-size: 60px 60px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 ul {
@@ -58,10 +60,8 @@ ul li > div {
   height: 80px;
   -webkit-transform: scale(0.9);
   transform: scale(0.9);
-  -webkit-transition-property: all 0.5s ease-out;
-  transition-property: all 0.5s ease-out;
-  -webkit-transition-duration: 0.2s;
-  transition-duration: 0.2s;
+  -webkit-transition-property: box-shadow 0.5s ease-out;
+  transition-property: box-shadow 0.5s ease-out;
 }
 
 ul li > div.add {
@@ -72,7 +72,16 @@ ul li > div.add {
 }
 
 ul li > div.playing {
-  box-shadow: 0px 0px 7px 7px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 60px -2px white;
+  -webkit-transition-duration: 0s;
+  transition-duration: 0s;
+}
+
+ul li > div.ng-click-active {
+  box-shadow: 0px 0px 60px -2px white;
+  -webkit-transition-duration: 0s;
+  transition-duration: 0s;
+  opacity: 0.7;
 }
 
 #record,
@@ -95,6 +104,7 @@ ul li > div.playing {
   -webkit-align-items: center;
   -ms-flex-align: center;
   box-align: center;
+  z-index: 100;
 }
 
 #record > div,

@@ -161,6 +161,15 @@ angular.module('soundboard').controller('BoardCtrl',['$scope','$q','fileService'
             }
         }
 
+        document.addEventListener('backbutton',function(){
+            if ($scope.recorder) {
+                $scope.recorder = false;
+                $scope.$apply()
+            } else {
+                navigator.app.exitApp()
+            }
+        },false)
+
 
     }, false);
 
@@ -183,11 +192,10 @@ angular.module('soundboard').controller('BoardCtrl',['$scope','$q','fileService'
                 fileService.rm(sound.image)
                 fileService.rm(sound.file)
                 $scope.editview = false
+                localStorage.setItem('sounds',angular.toJson($scope.sounds))
                 $scope.$apply()
             }
         })
     }
-
-
 
 }])
