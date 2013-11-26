@@ -6,11 +6,12 @@ angular.module('soundboard').factory('fileService',['$q',function($q){
 
     var wrap = function(fn) {
         return function() {
+            console.log(angular.toJson(arguments))
             var deferred = $q.defer()
             if (!fs || !window.cordova) {
                 deferred.reject('no filesystem')
             } else {
-                var args = Array.prototype.slice(arguments)
+                var args = Array.prototype.slice.call(arguments)
                 args.unshift(deferred)
                 fn.apply(this,args)
             }
@@ -24,6 +25,8 @@ angular.module('soundboard').factory('fileService',['$q',function($q){
     })
 
     fileService.rm = wrap(function(deferred,pth) {
+        console.log(angular.toJson(pth))
+        console.log(angular.toJson(deferred))
         if (!angular.isString(pth)) {
             deferred.reject('Path should be a string')
             return;

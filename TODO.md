@@ -1,12 +1,8 @@
 TODO
 ====
-
-* change to ng-switch for dialogs so only one is open at a given time
-* longtap top edit, making it possible to take picture again, from album and record again and delete
-* longtap on add adds image from album instead
-* remove files with File api, we need to delete images and sounds
-* handle patching of audioplayer better
-* back button should close dialogs 
+* touchstart to play, long-tap needs a new implementation
+* audio recording animation, and make it prettier
+* How many media objects can we open at a time?
 
 Post Release
 ------------
@@ -15,11 +11,10 @@ Post Release
 * intro overlay
 * export/save
 
-Styling
--------
+* change to ng-switch for dialogs so only one is open at a given time
+* longtap top edit, making it possible to take picture again, from album and record again and delete
+* longtap on add adds image from album instead
+* handle patching of audioplayer better
 
-* audio recording animation
-* Center the circles
-* Audio playing animation, maybe transition duration equal to sound duration?
-* Nicer tap feedback
-* Animate dialogs
+
+

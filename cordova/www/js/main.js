@@ -1,1 +1,1 @@
-angular.module('soundboard',['ngTouch'])
+angular.module('soundboard',['ngAnimate','ngTouch'])

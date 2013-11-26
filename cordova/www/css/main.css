@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -10,15 +17,17 @@
 }
 
 html {
+  /*height: 100%;*/
   padding: 0px;
   margin: 0px;
+  background-color: #333333;
 }
 
 body {
   padding: 20px;
   margin: 0px;
-  min-height: 100%;
-  background-image: url(../img/triangular.png);
+  /*min-height: 100%;*/
+  background-image: url(../img/tweed.png);
   background-size: 60px 60px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -84,6 +93,10 @@ ul li > div.ng-click-active {
   opacity: 0.7;
 }
 
+.clear {
+  clear: both;
+}
+
 #record,
 #edit {
   position: fixed;
@@ -91,38 +104,126 @@ ul li > div.ng-click-active {
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  box-pack: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  box-align: center;
+  background-color: #333333;
   z-index: 100;
+  opacity: 0;
+  display: none;
+  -webkit-transition: opacity 200ms;
+  transition: opacity 200ms;
 }
 
 #record > div,
 #edit > div {
-  width: 160px;
-  height: 160px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  box-align: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  box-pack: center;
+  height: 100%;
+  /** Styling the Button **/
+  /* Styling the Indicator light */
+}
+
+#record > div section,
+#edit > div section {
+  width: 125px;
+  height: 155px;
+  position: relative;
+  text-align: center;
+  display: none;
+}
+
+#record > div .button,
+#edit > div .button {
+  /*font-family: "FontAwesome";*/
+  font-family: "Roboto";
+  text-shadow: 0px 3px 3px rgba(250, 250, 250, 0.1);
+  font-size: 40px;
+  display: block;
+  position: relative;
+  text-decoration: none;
+  box-shadow: 0px 3px 0px 0px #222222, 0px 7px 10px 0px #111111, inset 0px 1px 1px 0px rgba(250, 250, 250, 0.2), inset 0px -12px 35px 0px rgba(0, 0, 0, 0.5);
+  width: 120px;
+  height: 120px;
+  border: 0;
+  color: #252525;
   border-radius: 50%;
-  background-color: #ff3333;
+  /*35px;*/
+  text-align: center;
+  line-height: 122px;
+  background-color: #53575d;
+  -webkit-transition: color 150ms ease, text-shadow 150ms;
+  transition: color 150ms ease, text-shadow 150ms;
 }
 
-#record > div.ng-click-active,
-#edit > div.ng-click-active {
-  opacity: 0.7;
+#record > div .button:before,
+#edit > div .button:before {
+  content: "";
+  width: 130px;
+  height: 130px;
+  display: block;
+  z-index: -2;
+  position: absolute;
+  background-color: #1a1b1d;
+  left: -5px;
+  top: -2px;
+  border-radius: 50%;
+  /*40px;*/
+  box-shadow: 0px 1px 0px 0px rgba(250, 250, 250, 0.1), inset 0px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-#record > div.recording,
-#edit > div.recording {
-  background-color: #333333;
+#record > div .button.ng-click-active,
+#edit > div .button.ng-click-active {
+  box-shadow: 0px 0px 0px 0px #222222, 0px 3px 7px 0px #111111, inset 0px 1px 1px 0px rgba(250, 250, 250, 0.2), inset 0px -10px 35px 5px rgba(0, 0, 0, 0.5);
+  background-color: #53575d;
+  top: 3px;
+}
+
+#record > div .button.recording,
+#edit > div .button.recording {
+  box-shadow: 0px 0px 0px 0px #222222, 0px 3px 7px 0px #111111, inset 0px 1px 1px 0px rgba(250, 250, 250, 0.2), inset 0px -10px 35px 5px rgba(0, 0, 0, 0.5);
+  background-color: #53575d;
+  top: 3px;
+  color: white;
+  text-shadow: 0px 0px 3px #fafafa;
+}
+
+#record > div .button.ng-click-active:before,
+#record > div .button.recording:before,
+#edit > div .button.ng-click-active:before,
+#edit > div .button.recording:before {
+  top: -5px;
+  background-color: #1a1b1d;
+  box-shadow: 0px 1px 0px 0px rgba(250, 250, 250, 0.1), inset 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+#record > div .dot,
+#edit > div .dot {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: #212121;
+  box-shadow: inset 0px 1px 0px 0px rgba(250, 250, 250, 0.5), 0px 0px 3px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  clear: both;
+  position: absolute;
+  bottom: 0;
+  left: 43.7%;
+  -webkit-transition: background-color 100ms, box-shadow 500ms;
+  transition: background-color 100ms, box-shadow 500ms;
+}
+
+#record > div .dot.recording,
+#edit > div .dot.recording {
+  box-shadow: inset 0px 1px 0px 0px rgba(250, 250, 250, 0.5), 0px 0px 3px 2px rgba(226, 0, 0, 0.5);
+  background-color: #e20000;
 }
 
 #edit {
@@ -131,4 +232,20 @@ ul li > div.ng-click-active {
   -webkit-flex-direction: vertical;
   -ms-flex-direction: vertical;
   box-orient: vertical;
+}
+
+/* general animations */
+
+.animate-fade {
+  -webkit-transition: 200ms linear opacity;
+  transition: 200ms linear opacity;
+}
+
+.animate-fade.ng-hide-add,
+.animate-fade.ng-hide-remove {
+  display: -webkit-box !important;
+}
+
+.animate-fade.ng-hide {
+  opacity: 0;
 }
