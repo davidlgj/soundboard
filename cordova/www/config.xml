@@ -8,8 +8,10 @@
         David Jensen
     </author>
     <content src="index.html" />
-    <access origin="*" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
     <preference name="Orientation" value="portrait" />
+    <preference name="splashscreen" value="tweed" />
+    <preference name="splashScreenDelay" value="10000" />
+
 </widget>

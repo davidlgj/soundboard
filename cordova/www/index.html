@@ -26,13 +26,6 @@
             </section>
         </div>
     </div>
-    <!-- TODO: make it editable
-        <div id="edit" ng-show="editview">
-        <div ng-click="delete(currentSound)">Delete</div>
-        <div ng-click="picture(currentSound)">Picture</div>
-        <div ng-click="album(currentSound)">From album</div>
-        <div ng-click="openRecorder(currentSound)">Record</div>
-    </div> -->
     <ul ng-show="onstart" class="animate-fade">
         <li ng-repeat="sound in sounds">
             <div id="sound{{$index}}" ng-style="{ 'background-image': 'url('+sound.image+')' }" 

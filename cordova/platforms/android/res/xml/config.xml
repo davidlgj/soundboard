@@ -21,6 +21,9 @@
     <feature name="Media">
         <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
     </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+    </feature>
     <author email="david.lgj@gmail.com" href="burningbroccoli.se">
         David Jensen
     </author>
@@ -28,4 +31,6 @@
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
     <preference name="Orientation" value="portrait" />
+    <preference name="splashscreen" value="tweed" />
+    <preference name="splashScreenDelay" value="10000" />
 </widget>

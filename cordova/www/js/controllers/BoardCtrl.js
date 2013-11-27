@@ -72,6 +72,7 @@ function($scope,  $q,  $timeout,  fileService,  audioService,  photoService){
             }
         },false)
 
+        setTimeout(navigator.splashscreen.hide,500)
 
     }, false);
 
