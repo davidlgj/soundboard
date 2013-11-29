@@ -9,6 +9,9 @@ function($scope,  $q,  $timeout,  fileService,  audioService,  photoService){
     $scope.recording = false
     $scope.onstart = true
 
+    $scope.padding = Math.floor((window.innerWidth - Math.floor(window.innerWidth/100)*100)/2);
+    console.log($scope.padding)
+
     var playing = {}
 
     document.addEventListener("deviceready", function(){
