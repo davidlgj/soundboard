@@ -20,17 +20,16 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         id        = "io.cordova.helloCordova"
         version   = "2.0.0">
-    <name>Hello Cordova</name>
+    <name>Soundboard</name>
 
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        DIY Soundboard
     </description>
 
-    <author href="http://cordova.io" email="dev@cordova.apache.org">
-        Apache Cordova Team
-    </author>
 
-    <access origin="*"/>
+    <author email="david.lgj@gmail.com" href="burningbroccoli.se">
+        David Jensen
+    </author>
 
     <!-- <content src="http://mysite.com/myapp.html" /> for external pages -->
     <content src="index.html" />
