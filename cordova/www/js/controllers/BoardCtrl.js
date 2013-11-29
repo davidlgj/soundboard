@@ -82,11 +82,11 @@ function($scope,  $q,  $timeout,  fileService,  audioService,  photoService){
         }
         
         //TODO: translate
-        navigator.notification.confirm('Delete sound?', function(button){
+        navigator.notification.confirm('Really delete?', function(button){
             if (button === 1) {
                 deleteSound(sound)
             }
-        })
+        },'Delete sound')
     }
 
     var deleteSound = function(sound){ 
