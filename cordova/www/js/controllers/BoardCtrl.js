@@ -9,8 +9,11 @@ function($scope,  $q,  $timeout,  fileService,  audioService,  photoService){
     $scope.recording = false
     $scope.onstart = true
 
-    $scope.padding = Math.floor((window.innerWidth - Math.floor(window.innerWidth/100)*100)/2);
-    console.log($scope.padding)
+    window.onresize = function(){
+        $scope.padding = Math.floor((window.innerWidth - Math.floor(window.innerWidth/110)*110)/2);
+        $scope.$apply();    
+    }
+    $scope.padding = Math.floor((window.innerWidth - Math.floor(window.innerWidth/110)*110)/2);
 
     var playing = {}
 
@@ -100,7 +103,7 @@ function($scope,  $q,  $timeout,  fileService,  audioService,  photoService){
             }
         }
         //FIXME: error handling. 
-        console.log(angular.toJson(sound))
+        //console.log(angular.toJson(sound))
         fileService.rm(sound.image).then(angular.noop,function(err){ console.log(err) })
         fileService.rm(sound.file).then(angular.noop,function(err){ console.log(err) })
         $scope.editview = false
@@ -124,12 +127,12 @@ function($scope,  $q,  $timeout,  fileService,  audioService,  photoService){
         //first show it
         n.style.display = 'block'
         var style = window.getComputedStyle(n)
-        console.log(style.display)
-        console.log(style.opacity)
+        //console.log(style.display)
+        //console.log(style.opacity)
 
         n.style.opacity = '1' //start transition
         return delay(200).then(function(){
-            console.log(Date.now()-start)
+            //console.log(Date.now()-start)
             document.querySelector('#record section').style.display = 'block'
             return true    
         })
