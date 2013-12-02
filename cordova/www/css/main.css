@@ -33,6 +33,124 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+@-webkit-keyframes intro {
+  from {
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+  }
+
+  35% {
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+  }
+
+  45% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  58% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  70% {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+
+  80% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes intro {
+  from {
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+  }
+
+  35% {
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+  }
+
+  45% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  58% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  70% {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+
+  80% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes playing {
+  from {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+
+  20% {
+    -webkit-transform: scale(0.75);
+    transform: scale(0.75);
+  }
+
+  60% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  to {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+@keyframes playing {
+  from {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+
+  20% {
+    -webkit-transform: scale(0.75);
+    transform: scale(0.75);
+  }
+
+  60% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  to {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
 ul {
   list-style: none;
   padding: 0px;
@@ -40,10 +158,132 @@ ul {
   width: 100%;
 }
 
+ul.intro li {
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-name: intro;
+  animation-name: intro;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+
+ul.intro li.delay-0 {
+  -webkit-animation-delay: 0ms;
+  animation-delay: 0ms;
+}
+
+ul.intro li.delay-1 {
+  -webkit-animation-delay: 100ms;
+  animation-delay: 100ms;
+}
+
+ul.intro li.delay-2 {
+  -webkit-animation-delay: 200ms;
+  animation-delay: 200ms;
+}
+
+ul.intro li.delay-3 {
+  -webkit-animation-delay: 300ms;
+  animation-delay: 300ms;
+}
+
+ul.intro li.delay-4 {
+  -webkit-animation-delay: 400ms;
+  animation-delay: 400ms;
+}
+
+ul.intro li.delay-5 {
+  -webkit-animation-delay: 500ms;
+  animation-delay: 500ms;
+}
+
+ul.intro li.delay-6 {
+  -webkit-animation-delay: 600ms;
+  animation-delay: 600ms;
+}
+
+ul.intro li.delay-7 {
+  -webkit-animation-delay: 700ms;
+  animation-delay: 700ms;
+}
+
+ul.intro li.delay-8 {
+  -webkit-animation-delay: 800ms;
+  animation-delay: 800ms;
+}
+
+ul.intro li.delay-9 {
+  -webkit-animation-delay: 900ms;
+  animation-delay: 900ms;
+}
+
+ul.intro li.delay-10 {
+  -webkit-animation-delay: 1000ms;
+  animation-delay: 1000ms;
+}
+
+ul.intro li.delay-11 {
+  -webkit-animation-delay: 1100ms;
+  animation-delay: 1100ms;
+}
+
+ul.intro li.delay-12 {
+  -webkit-animation-delay: 1200ms;
+  animation-delay: 1200ms;
+}
+
+ul.intro li.delay-13 {
+  -webkit-animation-delay: 1300ms;
+  animation-delay: 1300ms;
+}
+
+ul.intro li.delay-14 {
+  -webkit-animation-delay: 1400ms;
+  animation-delay: 1400ms;
+}
+
+ul.intro li.delay-15 {
+  -webkit-animation-delay: 1500ms;
+  animation-delay: 1500ms;
+}
+
+ul.intro li.delay-16 {
+  -webkit-animation-delay: 1600ms;
+  animation-delay: 1600ms;
+}
+
+ul.intro li.delay-17 {
+  -webkit-animation-delay: 1700ms;
+  animation-delay: 1700ms;
+}
+
+ul.intro li.delay-18 {
+  -webkit-animation-delay: 1800ms;
+  animation-delay: 1800ms;
+}
+
+ul.intro li.delay-19 {
+  -webkit-animation-delay: 1900ms;
+  animation-delay: 1900ms;
+}
+
+ul.intro li.delay-20 {
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
+}
+
 ul li {
   display: block;
   float: left;
   padding: 15px;
+  -webkit-transform: scale(0.1);
+  transform: scale(0.1);
 }
 
 ul li > div {
@@ -57,8 +297,7 @@ ul li > div {
   height: 80px;
   -webkit-transform: scale(0.9);
   transform: scale(0.9);
-  -webkit-transition-property: box-shadow 0.5s ease-out;
-  transition-property: box-shadow 0.5s ease-out;
+  /*transition-property: box-shadow 0.5s ease-out; */
 }
 
 ul li > div.add {
@@ -69,16 +308,23 @@ ul li > div.add {
 }
 
 ul li > div.playing {
-  box-shadow: 0px 0px 60px -2px white;
-  -webkit-transition-duration: 0s;
-  transition-duration: 0s;
+  /* box-shadow: 0px 0px 60px -2px #fff;
+                transition-duration: 0s;*/
+  -webkit-animation-duration: 500ms;
+  animation-duration: 500ms;
+  -webkit-animation-name: playing;
+  animation-name: playing;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
 }
 
 ul li > div.ng-click-active {
-  box-shadow: 0px 0px 60px -2px white;
-  -webkit-transition-duration: 0s;
-  transition-duration: 0s;
-  opacity: 0.7;
+  /*box-shadow: 0px 0px 60px -2px #fff;
+                transition-duration: 0s;*/
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
 }
 
 .clear {

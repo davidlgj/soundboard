@@ -27,12 +27,12 @@
         </div>
     </div>
     <ul ng-show="onstart" class="four animate-fade" ng-style="{ 'padding-left': padding+'px'}">
-        <li ng-repeat="sound in sounds">
+        <li class="delay-{{$index}}" ng-repeat="sound in sounds">
             <div id="sound{{$index}}" ng-style="{ 'background-image': 'url('+sound.image+')' }" 
                  ng-click="play(sound,$index)" 
                  taphold="delete(sound)"></div>
         </li>
-        <li><div class="add" ng-click="add()">+</div></li>
+        <li class="delay-{{sounds.length}}"><div class="add" ng-click="add()">+</div></li>
     </ul>
     <div class="clear"></div>
 </body>    

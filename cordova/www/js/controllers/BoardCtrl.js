@@ -78,7 +78,11 @@ function($scope,  $q,  $timeout,  fileService,  audioService,  photoService){
             }
         },false)
 
-        setTimeout(navigator.splashscreen.hide,500)
+        setTimeout(function(){
+            //start of intro animation
+            document.querySelector('ul').classList.add('intro')
+            navigator.splashscreen.hide()
+        },300);
 
     }, false);
 

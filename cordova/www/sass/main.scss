@@ -40,17 +40,81 @@ body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+@keyframes intro {
+  from {
+    transform: scale(0.1); 
+  }
+
+  35% {
+    transform: scale(1.15);
+  }
+
+  45% {
+    transform: scale(0.9);
+  }
+
+  58% {
+    transform: scale(1.1);
+  }
+
+  70% {
+    transform: scale(0.95);
+  }
+
+  80% {
+    transform: scale(1.05);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes playing {
+  from {
+    transform: scale(0.8); 
+  }
+
+  20% {
+    transform: scale(0.75);
+  }
+
+  60% {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0.9);
+  }
+}
+
+
 ul {
     list-style: none;
     padding: 0px;
     margin: 0px;
     width: 100%;
 
+    &.intro {
+        li {
+            animation-fill-mode: forwards;
+            animation-duration: 2s;
+            animation-name: intro;
+            animation-iteration-count: 1;
+            animation-timing-function: ease-out;
+            animation-delay: 2s;
+
+            @for $i from 0 through 20 { 
+                &.delay-#{$i} { animation-delay: $i*100ms; }
+            }
+        }
+    }
 
     li {
         display: block;
         float: left;
         padding: 15px;
+        transform: scale(0.1);
 
         > div  {
             border-radius: 50%;
@@ -65,7 +129,7 @@ ul {
             height: 80px;
 
             transform: scale(0.9);
-            transition-property: box-shadow 0.5s ease-out;
+            /*transition-property: box-shadow 0.5s ease-out; */
 
             &.add {
                 color: #333;
@@ -75,14 +139,18 @@ ul {
             }
 
             &.playing {
-                box-shadow: 0px 0px 60px -2px #fff;
-                transition-duration: 0s;
+                /* box-shadow: 0px 0px 60px -2px #fff;
+                transition-duration: 0s;*/
+                animation-duration: 500ms;
+                animation-name: playing;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
             }
 
             &.ng-click-active {
-                box-shadow: 0px 0px 60px -2px #fff;
-                transition-duration: 0s;
-                opacity: 0.7;
+                /*box-shadow: 0px 0px 60px -2px #fff;
+                transition-duration: 0s;*/
+                transform: scale(0.8);
             }
         }
     }
