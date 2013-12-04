@@ -7,8 +7,10 @@ Soundboard is an android app I'm developing for my kids.
 Its a simple app to create a soundboard from pictures and
 sounds they record themselves.
 
-It's not on play yet since it needs more styling,icons etc, but basic functionality is there.
-Download apk from repo: https://github.com/davidlgj/soundboard/blob/master/SoundBoard-debug.apk?raw=true
+Installation
+------------
+It's on Google Play under the name "SoundCircles Custom Soundboard"
+https://play.google.com/store/apps/details?id=se.burningbroccoli.soundboard
 
 
 Build instructions
